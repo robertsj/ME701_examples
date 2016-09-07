@@ -1,0 +1,8 @@
+This folder is populated with a file named "quote.txt" in the two branches
+"gandhi" and "szasz."  That file contains a quote from Mahatma Gandhi or
+Thomas Szasz, depending on the branch.  Suppose you have cloned this 
+repository and are working with the master branch.  Then the following leads
+to unexpected issues (but ones that can be resolved):
+
+user@machine ~/path/to/ME701_examples $ git merge gandhi
+user@machine ~/path/to/ME701_examples $ git merge szasz
