@@ -1,8 +1,8 @@
 #!/usr/bin/python2.7
 import sys
 import numpy as np
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+
+from PyQt5.QtWidgets import QApplication, QLabel, QLineEdit, QVBoxLayout
 
 class Form(QLabel) :
 
