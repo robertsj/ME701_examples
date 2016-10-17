@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 import sys
 import numpy as np
 
