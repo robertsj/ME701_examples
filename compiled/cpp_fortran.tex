@@ -184,16 +184,19 @@ other vendors; these include:
 \begin{frame}{Eclipse with C++ and Fortran}
 
 \begin{itemize}
- \item Your should already have ``Eclipse IDE for C/C++ Developers''
- \item To install Photran (condensed from \url{http://wiki.eclipse.org/PTP/photran/documentation/photran8installation})
+ \item Head to \url{http://www.eclipse.org/downloads/}
+ \item Click on "Download 64-Bit" button (or whatever shows up for your system),
+       which gets you a file like {\tt eclipse-inst-linux64.tar.gz}
+ \item {\tt tar -xf eclipse-inst-linux64.tar.gz}
+ \item {\tt cd eclipse-inst}
+ \item If you need Java 8:
     \begin{enumerate}
-      \item Click on Help $\rightarrow$ Install New Software
-      \item Click on the ``Available Software Sites'' hyperlink 
-      \item Find (or add) \url{download.eclipse.org/tools/ptp/updates/luna}
-      \item Click OK and select this site to work with
-      \item Expand ``Fortran Development Tools (Photran)" and check the box next to "Photran End-User Runtime''
-      \item Click Next and Finish
+        \item {\tt sudo add-apt-repository ppa:webupd8team/java}
+        \item {\tt sudo apt-get update}
+        \item {\tt sudo apt-get install oracle-java8-installer}
     \end{enumerate}
+ \item {\tt ./eclipse-inst}
+ \item Select Parallel Developers option (for C++ and Fortran Support)
 \end{itemize}
 
 \end{frame}
