@@ -6,6 +6,6 @@ using std::endl;
 
 int add2(int a, int b)
 {
-  cout << "add ints" << endl;
+  cout << "add 2 ints" << endl;
   return a + b;
 }

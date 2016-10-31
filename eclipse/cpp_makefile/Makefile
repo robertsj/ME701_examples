@@ -61,7 +61,7 @@ neat:
 .PHONY: clean neat
 
 %.o: %.cc
-	$(CC) $(CCFLAGS) $(INCLUDE) -c $<
+	$(CXX) $(CCFLAGS) $(INCLUDE) -c $<
 
 #===============================================================================
 # Dependencies
