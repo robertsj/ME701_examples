@@ -17,12 +17,8 @@ DEBUG = yes
 MKLDIR=/home/robertsj/opt/miniconda/lib/
 LIBMKLSERIAL   = -L${MKLDIR} -Wl,--no-as-needed -lmkl_intel_lp64 \
                  -lmkl_sequential -lmkl_core -lpthread -lm -ldl
- 
-# ACML is the AMD math library                 
-LIBACMLSERIAL  = -L/home/robertsj/opt/acml/acml4.4.0/gfortran64/lib/  \
-                 -lacml -lgfortran
-LIBACMLTHREAD  = -L/home/robertsj/opt/acml/acml4.4.0/gfortran64_mp/lib/ \
-                 -lacml_mp -lgfortran
+LIBMKLOPENMP   = -L${MKLDIR} -Wl,--no-as-needed -lmkl_intel_lp64 \
+                 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl
 
 # BLAS defines a generic set of functions with vendor-specific
 # implementations; here, we use the blas implementation from the 
@@ -76,6 +72,12 @@ driver-mv-blas-x:
 driver-mv-mkl-x:
 	$(F90) $(OPT) $(OMPFLAG) test_matrix_vector.f90 -o $@ $(LIBMKLSERIAL)
 
+# Use MKL as distributed in miniconda2
+driver-mv-mkl-omp-x:
+	$(F90) $(OPT) $(OMPFLAG) test_matrix_vector.f90 -o $@ $(LIBMKLOPENMP)
+
+###
+
 # Naive MM
 driver-mm-x:
 	$(F90) $(OPT) $(OMPFLAG) matrix_matrix.f90 test_matrix_matrix.f90 -o $@ 
@@ -87,6 +89,10 @@ driver-mm-blas-x:
 # Use MKL as distributed in miniconda2
 driver-mm-mkl-x:
 	$(F90) $(OPT) $(OMPFLAG) test_matrix_matrix.f90 -o $@ $(LIBMKLSERIAL)
+
+# Use MKL as distributed in miniconda2 with threading
+driver-mm-mkl-omp-x:
+	$(F90) $(OPT) $(OMPFLAG) test_matrix_matrix.f90 -o $@ $(LIBMKLOPENMP)
 
 # Remove objects, module files, and exectables
 clean:
